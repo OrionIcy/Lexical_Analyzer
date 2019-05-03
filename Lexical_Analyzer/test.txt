@@ -1,0 +1,12 @@
+program test;  # /*this is a tested simple program
+constant p=8; T=256; /*define constant p & T*/
+var a, b, c, i: integer; abc, ab: char; #a: boolean;
+kjh, def: array[2..10, 6..21] of integer;
+begin abc:="I am a student";
+for i:=2to 10 do kjh[i]:=i*2+t/i;
+for a:=6 to21 do
+ if kjh[a/3]>10a then def[a]:=6 else def[a]:=a+6;
+b:=2; while
+b<21 do begin c:=c+def[b; b:=b+1;
+ab:=abc+"I am a student"+"123 end;
+end. 

@@ -1,0 +1,6 @@
+Line 1, column 16: an invalid symbol. 
+Line 1, column 18: commenting delimiters are not matched. 
+Line 3, column 41: an invalid symbol. 
+Line 6, column 7: an incorrect identifier. 
+Line 8, column 14: an incorrect identifier. 
+Line 11, column 26: an incorrect string constant. Quotation marks are not mached. 
