@@ -1,5 +1,5 @@
-# Lexical_Analyser
-A simple lexical analyser using DFA(a part of a compiler).  
+# Lexical_Analyzer
+A simple lexical analyzer using DFA(a part of a compiler).  
 The acceptable language looks like Pascal(XD  
 Maybe the whole compiler could be accomplished(but it can't be in a high probability  
 Here are the details.  
