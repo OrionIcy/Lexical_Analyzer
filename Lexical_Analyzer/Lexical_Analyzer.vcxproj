@@ -125,10 +125,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="blizzard_hash.c" />
     <ClCompile Include="Lexical_Analyzer.c" />
     <ClCompile Include="stack.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="blizzard_hash.h" />
     <ClInclude Include="stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
