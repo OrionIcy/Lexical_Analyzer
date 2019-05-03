@@ -4,7 +4,6 @@
 #include <string.h>
 #include <conio.h>
 #include "stack.h"
-#include "blizzard_hash.h"
 
 #define _KEY_WORD_END "waiting for your expanding..."
 
@@ -43,10 +42,6 @@ int isRwtab = 0; //是否在关键字表里
 /*const */char* rwtab[] = { "and","array","begin","call","case","char","constant","do","else","end",
 							"for","if","input","integer","not","of","or","output","procedure","program",
 							"read","real","repeat","set","then","to","until","var","while","write",_KEY_WORD_END }; //关键字表
-int rwtablen = sizeof(rwtab) / 4 - 1;
-int rwval[sizeof(rwtab) / 4 - 1] = { 2,18,4,5,7,20,23,24,16,21,25,15,26,11,27,28,29,6,3,22,14,17,19,1,30,10,12,8,9,13 }; //种别码表，用于哈希
-MPQHASHTABLE* hrwtab, ** pp;
-
 
 inline void Press_Any_Key()
 {
@@ -78,12 +73,6 @@ int main()
 
     line = (char*)malloc(sizeof(char)*1024); //由于C中无法实现动态分配数组长度，所以一行假定为不超过1024个字符
     lineRead = (char*)malloc(sizeof(char)*1024);
-
-    //创建查找保留字的哈希表
-    pp = &hrwtab;
-    MPQHashTableInit(pp, rwtablen);
-    for (int i = 0; i < rwtablen; i++)
-        MPQHashTableAdd(rwtab[i], hrwtab);
 
     printf("[Please enter your file name below: ]\n>>>");
     setbuf(stdin, NULL);
@@ -168,7 +157,6 @@ int main()
     fclose(fpsymtab);
     free(line);
     free(lineRead);
-    MPQHashTableFree(hrwtab);
     Press_Any_Key();
     return 0;
 }
@@ -246,34 +234,20 @@ int digit()
 }
 
 //检索关键字表格
-//int reserve()
-//{
-//	int i = 0;
-//	while (strcmp(rwtab[i], _KEY_WORD_END))
-//	{
-//		if (!strcmp(rwtab[i], token))
-//		{
-//			isRwtab = 1;
-//			return i + 1;
-//		}
-//		i++;
-//	}
-//	isRwtab = 0;
-//	return 34;
-//}
-int reserve() //用哈希表
+int reserve()
 {
-    int t = MPQHashTableIsExist(token, hrwtab);
-    if (t != -1) 
-    {
-        isRwtab = 1;
-        return rwval[t];
-    }
-    else
-    {
-        isRwtab = 0;
-        return 34;
-    }
+	int i = 0;
+	while (strcmp(rwtab[i], _KEY_WORD_END))
+	{
+		if (!strcmp(rwtab[i], token))
+		{
+			isRwtab = 1;
+			return i + 1;
+		}
+		i++;
+	}
+	isRwtab = 0;
+	return 34;
 }
 
 //回退一个字符
